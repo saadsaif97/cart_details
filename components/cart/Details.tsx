@@ -1,18 +1,22 @@
-import { Box, Flex, Heading, HStack, Image, Text, VStack } from "@chakra-ui/react";
+import { AspectRatio, Box, Button, Flex, Heading, HStack, Image, Text, useColorMode, useColorModeValue, VStack } from "@chakra-ui/react";
 
 function Details() {
+  const { toggleColorMode } = useColorMode()
+  const detailsBG = useColorModeValue("gray.50", "gray.700")
   return (
-    <VStack w="full" h="full" p="10" spacing="6" bg="gray.50" alignItems="flex-start">
+    <VStack w="full" h="full" p="10" spacing="6" bg={detailsBG} alignItems="flex-start">
       <VStack spacing="3" alignItems="flex-start">
         <Heading fontSize="5xl" fontWeight="black">
           Your cart
         </Heading>
         <Text>
-          If price is too hard on your eyes, <strong>try changing the theme.</strong>
+          If price is too hard on your eyes, <Button onClick={toggleColorMode} variant="link">try changing the theme.</Button>
         </Text>
       </VStack>
       <Flex columnGap={6} alignItems="center" w="full">
-        <Image src="/static/images/product.png" w={24}></Image>
+        <AspectRatio ratio={1} w={24}>
+          <Image src="/static/images/product.png" alt="product"></Image>
+        </AspectRatio>
         <Box>
           <Text fontSize="lg" fontWeight="bold">Penny board</Text>
           <Text fontSize="lg">PNYCOMP27541</Text>
